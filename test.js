@@ -18,9 +18,10 @@ const harvest = reap(tree)
 
 ok("type", harvest.type("media").length, 2)
 ok("having", harvest.having("media").length, 2)
+ok("collect", harvest.collect("media"), correct.media)
+ok("media", harvest.media(), correct.media)
 ok("selectors", harvest.selectors(), correct.selectors)
 ok("properties", harvest.properties(), correct.properties)
-ok("media", harvest.media(), correct.media)
 
 if (fails) throw new Error("\n" + fails + " tests failed.")
 else console.log("\nAll tests passed.")

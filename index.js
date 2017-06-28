@@ -15,10 +15,14 @@ const use = function(method) {
   }
 }
 
-const search = function(key) {
-  return function() {
-    const results = this.having(key).map(node => node[key])
-    return flatten(results)
+const collect = function(key) {
+  const results = this.having(key).map(node => node[key])
+  return flatten(results)
+}
+
+const collects = function(key) {
+  return function() { 
+    return this.collect(key)
   }
 }
 
@@ -34,9 +38,10 @@ model.having = function(key) {
   return this.nodes().filter(node => node.hasOwnProperty(key))
 }
 
-model.media = search("media")
-model.properties = search("property")
-model.selectors = search("selectors")
+model.collect = collect
+model.media = collects("media")
+model.properties = collects("property")
+model.selectors = collects("selectors")
 
 model.inspect = function() {
   return inspect(this.traversal.clone())

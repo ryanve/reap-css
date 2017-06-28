@@ -23,7 +23,7 @@ harvest.media() // ["(color), (update)", "(orientation: portrait)"]
 
 ### `.selectors()`
 
-Get array of selectors.
+Collect array of selectors.
 
 ```js
 reap(tree).selectors()
@@ -31,7 +31,7 @@ reap(tree).selectors()
 
 ### `.properties()`
 
-Get array of properties.
+Collect array of properties.
 
 ```js
 reap(tree).properties()
@@ -39,10 +39,18 @@ reap(tree).properties()
 
 ### `.media()`
 
-Get array of media queries.
+Collect array of media queries.
 
 ```js
 reap(tree).media()
+```
+
+### `.collect(key)`
+
+Collect array of values.
+
+```js
+reap(tree).collect("selectors")
 ```
 
 ### `.having(key)`
